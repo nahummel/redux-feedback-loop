@@ -3,6 +3,28 @@ import axios from 'axios';
 import './App.css';
 
 class App extends Component {
+  state = {
+    feedback: []
+  }
+
+  componentDidMount() {
+    console.log('app mounted');
+    this.getFeedback();
+  }
+
+  getFeedback = () => {
+    console.log('get feedback');
+    axios({
+      method: 'GET',
+      url:'/api/feedback'
+    }).then(response => {
+      console.log(response.data);
+      this.setState({
+        feedback: response.data
+      })
+    })
+  }
+
   render() {
     return (
       <div className="App">
