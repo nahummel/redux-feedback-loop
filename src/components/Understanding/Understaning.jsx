@@ -9,6 +9,7 @@ class Understanding extends Component {
         console.log('in clickHandler')
         console.log(this.state)
         this.props.dispatch({ type: 'understanding', payload: this.state.understanding });
+        this.props.history.push('/support');
     }
 
     handleChange = (event, property) => {

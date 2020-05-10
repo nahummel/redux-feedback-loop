@@ -6,6 +6,7 @@ class ThankYou extends Component {
         if (property === 'RESET') {
             this.props.dispatch({ type: 'RESET' });
         }
+        this.props.history.push('/');
     }
 
     render() {

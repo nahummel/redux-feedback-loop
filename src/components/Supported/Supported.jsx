@@ -9,6 +9,7 @@ class Supported extends Component {
         console.log('in clickHandler')
         console.log(this.state)
         this.props.dispatch({ type: 'support', payload: this.state.support });
+        this.props.history.push('/comments');
     }
 
     handleChange = (event, property) => {

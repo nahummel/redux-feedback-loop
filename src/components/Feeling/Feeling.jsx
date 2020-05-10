@@ -9,6 +9,7 @@ class Feeling extends Component {
         console.log('in clickHandler')
         console.log(this.state)
         this.props.dispatch({ type:'feeling', payload: this.state.feeling});
+        this.props.history.push('/understanding');
     }
 
     handleChange = (event, property) => {

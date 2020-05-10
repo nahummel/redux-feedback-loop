@@ -30,6 +30,7 @@ class ReviewFeedback extends Component {
             comments: this.props.feedback[3]
         }
         this.setState(updatedState, this.addFeedback)
+        this.props.history.push('/thankyou');
     }
 
     render(){

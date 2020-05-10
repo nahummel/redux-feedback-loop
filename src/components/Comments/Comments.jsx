@@ -9,6 +9,7 @@ class Comments extends Component {
         console.log('in clickHandler')
         console.log(this.state)
         this.props.dispatch({ type: 'comment', payload: this.state.comment });
+        this.props.history.push('/review');
     }
 
     handleChange = (event, property) => {

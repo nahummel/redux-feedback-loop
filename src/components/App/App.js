@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
+import {HashRouter as Router, Route, Link} from 'react-router-dom';
 
 import './App.css';
 import Feeling from '../Feeling/Feeling';
@@ -11,13 +12,9 @@ import ReviewFeedback from '../ReviewFeedback/ReviewFeedback';
 import ThankYou from '../ThankYou/ThankYou';
 
 class App extends Component {
-  state = {
-    feedback: []
-  }
 
   componentDidMount() {
     this.getFeedback();
-    console.log(this.props.reduxState)
   }
 
   getFeedback = () => {
@@ -41,12 +38,14 @@ class App extends Component {
           <h4><i>Don't forget it!</i></h4>
         </header>
         <br/>
-        <Feeling dispatch={this.props.dispatch}/>
-        <Understanding dispatch={this.props.dispatch}/>
-        <Supported dispatch={this.props.dispatch}></Supported>
-        <Comments dispatch={this.props.dispatch}></Comments>
-        <ReviewFeedback feedback={this.props.reduxState} ></ReviewFeedback>
-        <ThankYou dispatch={this.props.dispatch}></ThankYou>
+        <Router>
+          <Route exact path= '/' render={(props) => <Feeling {...props} dispatch={this.props.dispatch}/>}/>
+          <Route path= '/understanding' render={(props) => <Understanding {...props} dispatch={this.props.dispatch}/>}/>
+          <Route path= '/support' render={(props) => <Supported {...props} dispatch={this.props.dispatch}/>}/>
+          <Route path= '/comments' render={(props) => <Comments {...props} dispatch={this.props.dispatch}/>}/>
+          <Route path= '/review' render={(props) => <ReviewFeedback {...props} feedback={this.props.reduxState}/>}/>
+          <Route path= '/thankyou' render={(props) => <ThankYou {...props} dispatch={this.props.dispatch}/>}/>
+        </Router>
       </div>
     );
   }
