@@ -8,8 +8,12 @@ class Feeling extends Component {
     clickHandler = () => {
         console.log('in clickHandler')
         console.log(this.state)
-        this.props.dispatch({ type:'feeling', payload: this.state.feeling});
-        this.props.history.push('/understanding');
+        if(this.state.feeling === '') {
+            alert('Please insert feedback!')
+        } else {
+            this.props.dispatch({ type: 'feeling', payload: this.state.feeling });
+            this.props.history.push('/understanding');
+        }
     }
 
     handleChange = (event, property) => {
