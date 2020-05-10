@@ -43,7 +43,7 @@ class App extends Component {
         <Understanding dispatch={this.props.dispatch}/>
         <Supported dispatch={this.props.dispatch}></Supported>
         <Comments dispatch={this.props.dispatch}></Comments>
-        <ReviewFeedback></ReviewFeedback>
+        <ReviewFeedback feedback={this.props.reduxState}></ReviewFeedback>
       </div>
     );
   }

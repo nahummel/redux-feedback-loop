@@ -8,11 +8,25 @@ import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 
 //Initial State
-const firstReducerInitialState = {};
+const firstReducerInitialState = [];
 
 const firstReducer = (state = firstReducerInitialState, action) => {
     console.log('in firstReducer: Action:', action);
-    return state;
+
+
+    if (action.type === 'feeling'){
+        state = [...state, action.payload];  
+    }
+    if (action.type === 'understanding'){
+        state = [...state, action.payload];
+    }
+    if (action.type === 'support'){
+        state = [...state, action.payload];
+    }
+    if (action.type === 'comment'){
+        state =[...state, action.payload];
+    }
+    return state; 
 }
 
 const storeInstance = createStore(firstReducer);
