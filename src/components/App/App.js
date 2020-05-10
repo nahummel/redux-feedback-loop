@@ -5,9 +5,10 @@ import {connect} from 'react-redux';
 import './App.css';
 import Feeling from '../Feeling/Feeling';
 import Understanding from '../Understanding/Understaning';
-import Supported from '../Supported/Supported'
-import Comments from '../Comments/Comments'
-import ReviewFeedback from '../ReviewFeedback/ReviewFeedback'
+import Supported from '../Supported/Supported';
+import Comments from '../Comments/Comments';
+import ReviewFeedback from '../ReviewFeedback/ReviewFeedback';
+import ThankYou from '../ThankYou/ThankYou';
 
 class App extends Component {
   state = {
@@ -44,7 +45,8 @@ class App extends Component {
         <Understanding dispatch={this.props.dispatch}/>
         <Supported dispatch={this.props.dispatch}></Supported>
         <Comments dispatch={this.props.dispatch}></Comments>
-        <ReviewFeedback feedback={this.props.reduxState} dispatch={this.props.dispatch}></ReviewFeedback>
+        <ReviewFeedback feedback={this.props.reduxState} ></ReviewFeedback>
+        <ThankYou dispatch={this.props.dispatch}></ThankYou>
       </div>
     );
   }
