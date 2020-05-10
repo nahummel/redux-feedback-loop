@@ -21,7 +21,7 @@ class ReviewFeedback extends Component {
         })
     }
 
-    clickHandler = () => {
+    clickHandler = (event, property) => {
         console.log('in clickHandler')
         const updatedState = {
             feeling: Number(this.props.feedback[0]),
@@ -30,6 +30,10 @@ class ReviewFeedback extends Component {
             comments: this.props.feedback[3]
         }
         this.setState(updatedState, this.addFeedback)
+        
+        if (property === 'submit') {
+            this.props.dispatch({type:'RESET'});
+        }
     }
 
     render(){
@@ -40,7 +44,7 @@ class ReviewFeedback extends Component {
             <h3>Understaning: {this.props.feedback[1]}</h3>
             <h3>Support: {this.props.feedback[2]}</h3>
             <h3>Comments: {this.props.feedback[3]}</h3>
-            <button onClick={this.clickHandler}>Submit</button>
+            <button onClick={(event) => this.clickHandler(event, 'submit')}>Submit</button>
             </>
         )
     }

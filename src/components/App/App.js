@@ -16,6 +16,7 @@ class App extends Component {
 
   componentDidMount() {
     this.getFeedback();
+    console.log(this.props.reduxState)
   }
 
   getFeedback = () => {
@@ -43,7 +44,7 @@ class App extends Component {
         <Understanding dispatch={this.props.dispatch}/>
         <Supported dispatch={this.props.dispatch}></Supported>
         <Comments dispatch={this.props.dispatch}></Comments>
-        <ReviewFeedback feedback={this.props.reduxState}></ReviewFeedback>
+        <ReviewFeedback feedback={this.props.reduxState} dispatch={this.props.dispatch}></ReviewFeedback>
       </div>
     );
   }

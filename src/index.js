@@ -6,14 +6,13 @@ import registerServiceWorker from './registerServiceWorker';
 //Redux
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
+import Feeling from './components/Feeling/Feeling';
 
 //Initial State
 const firstReducerInitialState = [];
 
 const firstReducer = (state = firstReducerInitialState, action) => {
     console.log('in firstReducer: Action:', action);
-
-
     if (action.type === 'feeling'){
         state = [...state, action.payload];  
     }
@@ -25,6 +24,9 @@ const firstReducer = (state = firstReducerInitialState, action) => {
     }
     if (action.type === 'comment'){
         state =[...state, action.payload];
+    }
+    if(action.type === 'RESET'){
+        state = firstReducerInitialState
     }
     return state; 
 }
