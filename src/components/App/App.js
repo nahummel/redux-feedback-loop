@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {connect} from 'react-redux';
+
 import './App.css';
 import Feeling from '../Feeling/Feeling';
 import Understanding from '../Understanding/Understaning';
@@ -13,7 +15,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    console.log('app mounted');
     this.getFeedback();
   }
 
@@ -38,14 +39,16 @@ class App extends Component {
           <h4><i>Don't forget it!</i></h4>
         </header>
         <br/>
-        <Feeling></Feeling>
-        <Understanding></Understanding>
-        <Supported></Supported>
-        <Comments></Comments>
+        <Feeling dispatch={this.props.dispatch}/>
+        <Understanding dispatch={this.props.dispatch}/>
+        <Supported dispatch={this.props.dispatch}></Supported>
+        <Comments dispatch={this.props.dispatch}></Comments>
         <ReviewFeedback></ReviewFeedback>
       </div>
     );
   }
 }
 
-export default App;
+const putReduxStateOnProps = (reduxState) => ({reduxState});
+
+export default connect(putReduxStateOnProps)(App);
